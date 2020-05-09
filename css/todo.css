@@ -1,9 +1,89 @@
 body,
 body * {
-margin: 0;
-padding: 0;
-vertical-align: top;
-box-sizing: border-box;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-word-break: break-all;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    word-break: break-all;
+}
+
+body{
+    background-color: lavender
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "form"
+        ".";
+    width: 100%;
+    padding: 20px;
+    gap: 15px 40px;
+}
+    .container > .form {
+        display: inline-block;
+        grid-area: form;
+        background-color: mediumslateblue ;
+    }
+    .container > .item {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px #000500;
+        border-radius: 8px;
+        position: relative;
+    }
+        .container > .item > .status {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 10px;
+            background-color: aquamarine;
+        }
+            .container > .item > .status.todo {
+                background-color: darksalmon;
+            }
+            .container > .item > .status.in-progress {
+                background-color: greenyellow;
+            }
+            .container > .item > .status.done {
+                background-color: royalblue;
+            }
+        .container > .item > .description {
+            display: inline-block;
+            width: 100%;
+            font-size: 22px;
+            line-height: 26px;
+        }
+        .container > .item > .deadline {
+            display: inline-block;
+            width: 100%;
+        }
+
+@media ( min-width: 500px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "form form"
+        ". .";
+    }
+}
+@media ( min-width: 900px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+        "form form form"
+        ". . .";
+    }
+}
+@media ( min-width: 1300px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "form form form form"
+        ". . . .";
+    }
 }
