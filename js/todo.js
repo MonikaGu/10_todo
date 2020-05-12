@@ -21,9 +21,11 @@ function renderList( list ) {
 
 renderList( todo_list );
 
+// Remove single item
+
 const removeActions = document.querySelectorAll('.item .action.remove');
 
-for (let i = 0; i < removeActions.length; i++) {
+for ( let i = 0; i < removeActions.length; i++ ) {
     const removeElement = removeActions[i];
     removeElement.addEventListener('click', actionRemoveTodoItem);
 }
@@ -31,4 +33,20 @@ for (let i = 0; i < removeActions.length; i++) {
 function actionRemoveTodoItem( event ) {
     const parentItem = event.target.closest('.item');
     parentItem.remove();
+}
+ 
+// Remove all items
+
+const BTNremoveAll = document.querySelector('.global-actions > .action.remove');
+
+BTNremoveAll.addEventListener('click', actionRemoveAllTodoItems )
+
+function actionRemoveAllTodoItems( event ) {
+    const allTodoItems = event.target
+                            .closest('.container')
+                            .querySelectorAll('.item');
+
+    for ( let i = 0; i < allTodoItems.length; i++) {
+    allTodoItems[i].remove();
+    }
 }
