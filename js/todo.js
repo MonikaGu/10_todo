@@ -50,3 +50,19 @@ function actionRemoveAllTodoItems( event ) {
     allTodoItems[i].remove();
     }
 }
+
+// Form actions
+
+const DOMform = document.querySelector('.form');
+const DOMtaskTextarea = DOMform.querySelector('textarea[name="task"]');
+const DOMdeadlineInput = DOMform.querySelector('input[name="deadline"]');
+const DOMformActions = DOMform.querySelector('.actions');
+const DOMformAdd = DOMformActions.querySelector('.btn.add');
+const DOMformClear = DOMformActions.querySelector('.btn.clear');
+
+DOMformClear.addEventListener('click', clearForm );
+
+function clearForm( event ) {
+    DOMtaskTextarea.value = '';
+    DOMdeadlineInput.value = ''; 
+}
