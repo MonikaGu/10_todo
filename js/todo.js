@@ -18,10 +18,17 @@ function renderList( list ) {
     }
     return listPlace.innerHTML += HTML;
 }
+
 renderList( todo_list );
 
-// for (let i = 0; i < todo_list.length; i++) {
-//     const todo = todo_list[i];
-//     const sentence = `Uzduotis, kuria reikia padaryti yra "${todo.description}" ir ja reikia atlikti iki ${todo.deadline}, siuo metu yra busenoje "${todo.status}".`;
-//     console.log(sentence);
-// }
+const removeActions = document.querySelectorAll('.item .action.remove');
+
+for (let i = 0; i < removeActions.length; i++) {
+    const removeElement = removeActions[i];
+    removeElement.addEventListener('click', actionRemoveTodoItem);
+}
+
+function actionRemoveTodoItem( event ) {
+    const parentItem = event.target.closest('.item');
+    parentItem.remove();
+}
