@@ -9,15 +9,16 @@ function renderList( list ) {
      HTML += `
         <div class="item">
             <div class="status ${todoItem.status}"></div>
-           <p class="description">${todoItem.description}</p>
-           <div class="deadline">${todoItem.deadline}</div>
+            <p class="description">${todoItem.description}</p>
+            <div class="deadline">${todoItem.deadline}</div>
+            <div class="actions">
+                <div class="action remove">Remove</div>
+            </div>
         </div>`;
     }
     return listPlace.innerHTML += HTML;
 }
 renderList( todo_list );
-
-
 
 // for (let i = 0; i < todo_list.length; i++) {
 //     const todo = todo_list[i];

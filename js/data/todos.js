@@ -16,6 +16,12 @@ let todo_list = [
         created_on: `2020-05-05 18:15`,
         deadline: `2020-05-06 20:00`,
         status: `todo`
+    },
+    {
+        description: `"Įkirsti" JS`,
+        created_on: `2020-05-05 00:00`,
+        deadline: `2020-05-20 00:00`,
+        status: `in-progress`
     }
 ];
 

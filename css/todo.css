@@ -62,6 +62,19 @@ body{
             display: inline-block;
             width: 100%;
         }
+        .container > .item > .actions {
+            display: inline-block;
+            width: 100%;
+        }
+            .item > .actions > .action {
+                display: inline-block;
+                margin: 10px 10px 0 0;
+                color: darkblue;
+                line-height: 20px;
+                font-size: 14px;
+                text-decoration: underline;
+                cursor: pointer;
+            }
 
 @media ( min-width: 500px) {
     .container {
