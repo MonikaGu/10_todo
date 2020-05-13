@@ -96,11 +96,34 @@ function removeTodo( todoIndex ) {
             leftTodos.push( todo_list[i] );
     }
     todo_list = leftTodos;
-    console.log( DOMitems );
-    console.log( todo_list );
-    
-    
     return;
+}
+
+function createNewTodo () {
+    todo_id++;
+    let newTodo = {
+        id: todo_id,
+        description: DOMtaskTextarea.value.trim(),
+        created_on: formatedDate(),
+        deadline: DOMdeadlineInput.value.trim(),
+        status: `todo`
+    };
+    console.log(newTodo);
+    
+    
+    // console.log('TODO: validuojame description');
+    if ( newTodo.description.length === 0 ) {
+        return alert('ERROR: tuscias aprasymas');
+    }
+
+    // console.log('TODO: validuojame deadline');
+    if ( newTodo.deadline.length > 0 && 
+        (new Date( newTodo.deadline )).toString() === 'Invalid Date' ) {
+        return console.error('ERROR: nevalidus deadline');
+    }
+
+    todo_list.push( newTodo );
+    renderTodoItem( newTodo );
 }
 
 renderList(todo_list);
@@ -108,3 +131,5 @@ renderList(todo_list);
 DOMdeadlineInput.value = formatedDate( 86400000 );
 
 BTNremoveAll.addEventListener('click', removeAllTodos);
+
+DOMformAdd.addEventListener('click', createNewTodo);
