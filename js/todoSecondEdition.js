@@ -1,5 +1,8 @@
 "use strict";
 
+let todo_id = 0;
+let todo_list = [];
+
 const DOMcontainer = document.querySelector('.container');
 const DOMglobals = DOMcontainer.querySelector('.global-actions');
 const BTNremoveAll = DOMglobals.querySelector('.action.remove');
@@ -96,11 +99,11 @@ function removeTodo( todoIndex ) {
             leftTodos.push( todo_list[i] );
     }
     todo_list = leftTodos;
+    updateMemory();
     return;
 }
 
 function createNewTodo () {
-    todo_id++;
     let newTodo = {
         id: todo_id,
         description: DOMtaskTextarea.value.trim(),
@@ -124,7 +127,31 @@ function createNewTodo () {
 
     todo_list.push( newTodo );
     renderTodoItem( newTodo );
+    todo_id++;
+    updateMemory();
 }
+
+function memoryManagement() {
+    // todo_id = 0;
+    if ( localStorage.getItem('todo_id') ) {
+        todo_id = JSON.parse( localStorage.getItem('todo_id') );
+    } else {
+        localStorage.setItem('todo_id', JSON.stringify(todo_id) );
+    }
+    
+    // todo_listt = [];
+    if ( localStorage.getItem('todo_list') ) {
+        todo_list = JSON.parse( localStorage.getItem('todo_list') );
+    } else {
+        localStorage.setItem('todo_list', JSON.stringify(todo_list) );
+    }
+}
+
+function updateMemory() {
+    localStorage.setItem('todo_id', JSON.stringify(todo_id) );
+    localStorage.setItem('todo_list', JSON.stringify(todo_list) );
+}
+memoryManagement();
 
 renderList(todo_list);
 
