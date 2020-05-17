@@ -8,7 +8,7 @@ body * {
     word-break: keep-all;
 }
 
-body{
+body {
     background-color: lavender
 }
 .container {
@@ -41,23 +41,50 @@ body{
                 width: 100%;
             }
             .form > fieldset > textarea {
-            display: inline-block;
-            width: 100%;
-            min-height: 95px;
-            height: 95px;
-            max-height: 270px;
-            padding: 10px;
-            line-height: 25px;
-            font-size: 20px;
-            resize: vertical;
-        }
+                display: inline-block;
+                width: 100%;
+                min-height: 95px;
+                height: 95px;
+                max-height: 270px;
+                padding: 10px;
+                line-height: 25px;
+                font-size: 20px;
+                resize: vertical;
+            }
             .form > fieldset > input {
-            display: inline-block;
-            width: 100%;
-            padding: 10px;
-            line-height: 25px;
-            font-size: 20px;
-        }
+                display: inline-block;
+                width: 100%;
+                padding: 10px;
+                line-height: 25px;
+                font-size: 20px;
+            }
+            .form > fieldset.status {
+                display: none;
+            }
+            .switch {
+                display: inline-block;
+                border: 1px solid #cccc;
+                border-radius: 8px;
+            }
+                .switch > .option {
+                    display: inline-block;
+                    padding: 10px;
+                    float: left;
+                    line-height: 25px;
+                    font-size: 20px;
+                    background-color: #ffffff;
+                    color: #333333;
+                    cursor: pointer;
+                }
+                    .switch > .option:hover {
+                        background-color: #d8d5d5;
+                    }
+                    .switch[data-selected="todo"] > .option[data-option="todo"],
+                    .switch[data-selected="progress"] > .option[data-option="progress"], 
+                    .switch[data-selected="done"] > .option[data-option="done"] {
+                        background-color: #36f;
+                        color: #fff;
+                }
         .container > .form > .actions {
             display: inline-block;
             width: 100%;
@@ -91,6 +118,21 @@ body{
                     .form > .actions > .btn.clear:hover {
                         display: inline-block;
                     }
+                .form > .actions > .btn.save,
+                .form > .actions > .btn.cancel {
+                    display: none;
+                }
+            .form.editing > fieldset.status {
+                display: inline-block;
+            }
+            .form.editing > .actions > .btn.save,
+            .form.editing > .actions > .btn.cancel {
+                display: inline-block;
+            }
+            .form.editing > .actions > .btn.add,
+            .form.editing > .actions > .btn.clear {
+                display: none;
+            }
     .container > .item {
         display: inline-block;
         padding: 10px 20px;
@@ -111,7 +153,7 @@ body{
             .container > .item > .status.todo {
                 background-color: darksalmon;
             }
-            .container > .item > .status.in-progress {
+            .container > .item > .status.progress {
                 background-color: greenyellow;
             }
             .container > .item > .status.done {
@@ -139,6 +181,9 @@ body{
                 font-size: 14px;
                 text-decoration: underline;
                 cursor: pointer;
+            }
+            .container.editing .item > .actions {
+                visibility: hidden;
             }
 
 @media ( min-width: 500px) {

@@ -1,3 +1,7 @@
+"use strict";
+let todo_id = 0;
+let todo_list = [];
+
 // let todo_id = 4;
 
 // let todo_list = [
